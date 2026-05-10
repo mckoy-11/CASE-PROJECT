@@ -28,7 +28,7 @@ public class SignupScreen extends JPanel {
     private CustomComboBox<String> genderField;
     private CustomTextField emailField;
     private CustomComboBox<String> userTypeField;
-    private CustomComboBox<String> barangayField;
+    private CustomTextField barangayField;
     private CustomPasswordField passwordField;
     private CustomPasswordField confirmPasswordField;
 
@@ -364,13 +364,7 @@ public class SignupScreen extends JPanel {
                 );
 
         barangayField =
-                new CustomComboBox<>(
-                        new String[]{
-                                "Select Barangay",
-                                "Barangay 1",
-                                "Barangay 2"
-                        }
-                );
+                new CustomTextField("Enter your barangay");
 
         passwordField =
                 new CustomPasswordField("Enter password");
@@ -534,7 +528,7 @@ public class SignupScreen extends JPanel {
 
                         String barangay =
                                 "Barangay Admin".equals(userType)
-                                        ? (String) barangayField.getSelectedItem()
+                                        ? (String) barangayField.getText()
                                         : null;
 
                         return AuthService.register(
@@ -614,7 +608,7 @@ public class SignupScreen extends JPanel {
                 (String) userTypeField.getSelectedItem();
 
         String barangay =
-                (String) barangayField.getSelectedItem();
+                barangayField.getActualText().trim();
 
         if (fullName.isEmpty()
                 || email.isEmpty()

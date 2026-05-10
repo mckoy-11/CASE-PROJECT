@@ -156,8 +156,17 @@ public class MenroHomePage extends JPanel {
         card.setPreferredSize(new Dimension(148, 200));
         card.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-        JLabel header = new JLabel(dayLabel, SwingConstants.CENTER);
+        String todayName = today.getDayOfWeek()
+                .getDisplayName(java.time.format.TextStyle.FULL, java.util.Locale.ENGLISH);
+        boolean isToday = dayLabel.equalsIgnoreCase(todayName);
+
+        JLabel header = new JLabel(dayLabel + (isToday ? " (Today)" : ""), SwingConstants.CENTER);
         header.setFont(Typography.HEADING_H3);
+        if (isToday) {
+            header.setForeground(Color.WHITE);
+        } else {
+            header.setForeground(Colors.TEXT_PRIMARY);
+        }
 
         JPanel content = createDayScheduleInfo(card, dayLabel, today);
 

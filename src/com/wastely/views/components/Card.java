@@ -160,11 +160,11 @@ public class Card extends JPanel {
     /**
      * Transparent / non-opaque card version
      */
-    public static JPanel createTransparentCard() {
+    public static JPanel createTransparentCard(Color color) {
         return new RoundedCardPanel(
                 12, 12, 12, 12,
                 2, 4,
-                Color.WHITE,
+                color,
                 false
         );
     }

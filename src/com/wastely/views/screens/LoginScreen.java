@@ -233,9 +233,7 @@ public class LoginScreen extends JPanel {
         signupBtn.setFocusPainted(false);
         signupBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        signupBtn.addActionListener(e -> {
-            app.showSignupScreen();
-        });
+        signupBtn.addActionListener(e -> app.showSignupScreen());
 
         signupPanel.add(noAccountLabel);
         signupPanel.add(signupBtn);
@@ -301,7 +299,7 @@ public class LoginScreen extends JPanel {
                     errorLabel.setText("An error occurred during login. Please try again.");
                 });
             } finally {
-                clearLoginFields();
+                SwingUtilities.invokeLater(this::clearLoginFields);
             }
         });
         
@@ -310,7 +308,7 @@ public class LoginScreen extends JPanel {
     }
 
     private void clearLoginFields() {
-    emailField.setText("");
-    passwordField.setText("");
-}
+        emailField.setText("");
+        passwordField.setText("");
+    }
 }

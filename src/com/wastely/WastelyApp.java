@@ -6,6 +6,7 @@ import com.wastely.database.DatabaseManager;
 import com.wastely.models.AppSession;
 import com.wastely.views.screens.LoginScreen;
 import com.wastely.views.screens.SignupScreen;
+import com.wastely.views.screens.WelcomePage;
 import com.wastely.views.layouts.MenroLayout;
 import com.wastely.views.layouts.BarangayLayout;
 
@@ -17,6 +18,7 @@ import com.wastely.views.layouts.BarangayLayout;
 public class WastelyApp extends JFrame {
     private CardLayout cardLayout;
     private JPanel cardPanel;
+    private static final String WELCOME_PAGE = "WELCOME_PAGE";
     private static final String LOGIN_SCREEN = "LOGIN";
     private static final String SIGNUP_SCREEN = "SIGNUP";
     private static final String MENRO_LAYOUT = "MENRO";
@@ -40,6 +42,7 @@ public class WastelyApp extends JFrame {
         cardPanel.setBackground(Color.WHITE);
         
         // Add screens
+        cardPanel.add(new WelcomePage(this), WELCOME_PAGE);
         cardPanel.add(new LoginScreen(this), LOGIN_SCREEN);
         cardPanel.add(new SignupScreen(this), SIGNUP_SCREEN);
         cardPanel.add(new MenroLayout(this), MENRO_LAYOUT);
@@ -47,8 +50,7 @@ public class WastelyApp extends JFrame {
         
         add(cardPanel);
         
-        // Show login screen on startup
-        showLoginScreen();
+        showWelcomePage();
     }
     
     /**
@@ -76,6 +78,14 @@ public class WastelyApp extends JFrame {
         }
     }
     
+    /**
+     * Show the login screen.
+     */
+    public void showWelcomePage() {
+        AppSession.getInstance().logout();
+        cardLayout.show(cardPanel, WELCOME_PAGE);
+    }
+
     /**
      * Show the login screen.
      */
