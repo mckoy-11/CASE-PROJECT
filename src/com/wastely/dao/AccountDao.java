@@ -251,7 +251,7 @@ public class AccountDao {
                 if (rs.next()) {
                     account.setBarangayAdminId(rs.getInt("barangay_admin_id"));
                     int currentBarangayId = rs.getInt("barangay_id");
-                    String updateSql = "UPDATE barangay_admin SET barangay_admin = ?, age = ?, gender_id = ? WHERE account_id = ?";
+                    String updateSql = "UPDATE barangay_admin SET admin_name = ?, age = ?, gender_id = ? WHERE account_id = ?";
                     try (PreparedStatement update = conn.prepareStatement(updateSql)) {
                         update.setString(1, adminName);
                         if (ageValue != null) {
@@ -271,7 +271,7 @@ public class AccountDao {
                         account.setBarangayId(currentBarangayId);
                     }
                 } else {
-                    String insertSql = "INSERT INTO barangay_admin (barangay_id, account_id, barangay_admin, age, gender_id) VALUES (?, ?, ?, ?, ?)";
+                    String insertSql = "INSERT INTO barangay_admin (barangay_id, account_id, admin_name, age, gender_id) VALUES (?, ?, ?, ?, ?)";
                     try (PreparedStatement insert = conn.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS)) {
                         if (account.getBarangayId() > 0) {
                             insert.setInt(1, account.getBarangayId());

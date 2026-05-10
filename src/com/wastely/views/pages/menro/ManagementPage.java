@@ -42,7 +42,7 @@ public class ManagementPage extends JPanel {
         DataChangeBus.subscribe(DataTopics.TEAMS, this::refreshUI);
         DataChangeBus.subscribe(DataTopics.TRUCKS, this::refreshUI);
 
-        add(new Header("Management"), BorderLayout.NORTH);
+        add(new Header("Management", false), BorderLayout.NORTH);
         add(createMainContent(), BorderLayout.CENTER);
     }
 
@@ -107,7 +107,6 @@ public class ManagementPage extends JPanel {
 
         JPanel grid = new JPanel(new GridLayout(0, 2, 15, 15)); // 2 columns
         grid.setOpaque(false);
-        grid.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         for (Team team : teamService.getAllTeams()) {
             grid.add(createTeamCard(team));
@@ -172,7 +171,6 @@ public class ManagementPage extends JPanel {
 
         JPanel container = new JPanel(new GridBagLayout());
         container.setOpaque(false);
-        container.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -264,7 +262,7 @@ public class ManagementPage extends JPanel {
         title.setFont(HEADING_H3);
 
         JPanel navBar = ComponentStyle.createTransparentPanel(new GridLayout(1, 3, 5, 0));
-        navBar.setPreferredSize(new Dimension(300, 35));
+        navBar.setPreferredSize(new Dimension(500, 35));
 
         for (String view : new String[]{PERSONNEL_VIEW, TEAM_VIEW, TRUCK_VIEW}) {
             CustomButton button = new CustomButton(view);
@@ -278,7 +276,7 @@ public class ManagementPage extends JPanel {
         CustomButton addButton = new CustomButton("Add");
         addButton.setPreferredSize(new Dimension(100, 35));
         addButton.addActionListener(event -> openCreateDialog());
-        right.add(addButton);
+        navBar.add(addButton);
 
         header.add(title, BorderLayout.WEST);
         header.add(right, BorderLayout.EAST);

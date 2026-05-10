@@ -4,6 +4,7 @@ import com.wastely.model.Account;
 import com.wastely.models.PopupItem;
 import com.wastely.service.AccountService;
 import com.wastely.utils.UINotificationHelper;
+import com.wastely.views.components.Header;
 import com.wastely.views.components.ScrollableTable;
 import com.wastely.views.components.SearchBar;
 
@@ -26,10 +27,7 @@ public class UsersPage extends JPanel {
 
         setupUI();
 
-        loadTableData(
-                "",
-                "All Account"
-        );
+        loadTableData("", "All Account");
     }
 
     private void setupUI() {
@@ -99,11 +97,8 @@ public class UsersPage extends JPanel {
                 table,
                 BorderLayout.CENTER
         );
-
-        add(
-                contentPanel,
-                BorderLayout.CENTER
-        );
+        add(new Header("Account Management", false), BorderLayout.NORTH);
+        add(contentPanel,  BorderLayout.CENTER);
     }
 
     private void loadTableData(

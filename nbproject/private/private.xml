@@ -5,17 +5,19 @@
         <group>
             <file>file:/C:/Users/Micko%20Jay/Documents/NetBeansProjects/case%20project/src/com/wastely/views/components/ScrollableTable.java</file>
             <file>file:/C:/Users/Micko%20Jay/Documents/NetBeansProjects/case%20project/src/com/wastely/views/pages/barangay/BarangayHomePage.java</file>
-            <file>file:/C:/Users/Micko%20Jay/Documents/NetBeansProjects/case%20project/src/com/wastely/views/pages/menro/BarangayPanel.java</file>
             <file>file:/C:/Users/Micko%20Jay/Documents/NetBeansProjects/case%20project/src/com/wastely/utils/Typography.java</file>
             <file>file:/C:/Users/Micko%20Jay/Documents/NetBeansProjects/case%20project/src/com/wastely/service/ScheduleService.java</file>
             <file>file:/C:/Users/Micko%20Jay/Documents/NetBeansProjects/case%20project/src/com/wastely/views/pages/menro/MenroHomePage.java</file>
-            <file>file:/C:/Users/Micko%20Jay/Documents/NetBeansProjects/case%20project/src/com/wastely/views/pages/menro/Management.java</file>
+            <file>file:/C:/Users/Micko%20Jay/Documents/NetBeansProjects/case%20project/src/com/wastely/views/pages/menro/forms/TruckFormDialog.java</file>
             <file>file:/C:/Users/Micko%20Jay/Documents/NetBeansProjects/case%20project/src/com/wastely/views/components/Card.java</file>
             <file>file:/C:/Users/Micko%20Jay/Documents/NetBeansProjects/case%20project/src/com/wastely/utils/ComponentStyle.java</file>
             <file>file:/C:/Users/Micko%20Jay/Documents/NetBeansProjects/case%20project/src/com/wastely/models/PopupItem.java</file>
             <file>file:/C:/Users/Micko%20Jay/Documents/NetBeansProjects/case%20project/src/com/wastely/utils/Colors.java</file>
+            <file>file:/C:/Users/Micko%20Jay/Documents/NetBeansProjects/case%20project/src/com/wastely/views/pages/menro/forms/PersonnelFormDialog.java</file>
+            <file>file:/C:/Users/Micko%20Jay/Documents/NetBeansProjects/case%20project/src/com/wastely/views/pages/menro/forms/TeamFormDialog.java</file>
             <file>file:/C:/Users/Micko%20Jay/Documents/NetBeansProjects/case%20project/src/com/wastely/views/components/SummaryCards.java</file>
             <file>file:/C:/Users/Micko%20Jay/Documents/NetBeansProjects/case%20project/src/com/wastely/WastelyApp.java</file>
+            <file>file:/C:/Users/Micko%20Jay/Documents/NetBeansProjects/case%20project/src/com/wastely/views/screens/WelcomePage.java</file>
         </group>
     </open-files>
 </project-private>

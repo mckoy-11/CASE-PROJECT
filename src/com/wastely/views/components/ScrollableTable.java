@@ -60,7 +60,7 @@ public final class ScrollableTable extends JPanel {
         scrollPane.setCorner(JScrollPane.UPPER_LEFT_CORNER, new JPanel());
         scrollPane.setCorner(JScrollPane.LOWER_LEFT_CORNER, new JPanel());
         
-        header = new Header(title);
+        header = new Header(title, true);
         add(header, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
     }

@@ -13,10 +13,9 @@ import com.wastely.model.Schedule;
 import com.wastely.service.ScheduleService;
 import com.wastely.store.DataChangeBus;
 import com.wastely.store.DataTopics;
-import com.wastely.utils.Colors;
-import com.wastely.utils.Typography;
 import com.wastely.utils.UINotificationHelper;
 import com.wastely.views.components.CustomButton;
+import com.wastely.views.components.Header;
 import com.wastely.views.components.ScrollableTable;
 import com.wastely.views.components.SearchBar;
 import com.wastely.views.pages.menro.forms.ScheduleFormDialog;
@@ -98,14 +97,10 @@ public class SchedulePage extends JPanel {
         headerPanel.setBackground(new Color(240, 249, 245));
         headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 30, 10, 30));
         
-        JLabel titleLabel = new JLabel("Schedule Management");
-        titleLabel.setFont(Typography.HEADING_H1);
-        titleLabel.setForeground(Colors.TEXT_PRIMARY);
-        
         CustomButton addBtn = new CustomButton("+ Add Schedule", CustomButton.ButtonStyle.PRIMARY);
         addBtn.addActionListener(e -> addSchedule());
         
-        headerPanel.add(titleLabel, BorderLayout.WEST);
+        headerPanel.add(new Header("Schedule Management", false), BorderLayout.WEST);
         headerPanel.add(addBtn, BorderLayout.EAST);
         add(headerPanel, BorderLayout.NORTH);
         

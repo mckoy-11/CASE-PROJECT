@@ -5,12 +5,11 @@ import javax.swing.*;
 import java.awt.*;
 import com.wastely.model.Barangay;
 import com.wastely.service.BarangayService;
-import com.wastely.utils.Colors;
 import com.wastely.utils.ComponentStyle;
-import com.wastely.utils.Typography;
 import com.wastely.utils.UINotificationHelper;
 import com.wastely.views.components.Card;
 import com.wastely.views.components.CustomScrollPane;
+import com.wastely.views.components.Header;
 import com.wastely.views.components.ScrollableTable;
 import com.wastely.views.components.SearchBar;
 
@@ -31,17 +30,7 @@ public class BarangayPage extends JPanel {
         setLayout(new BorderLayout());
         setBackground(new Color(240, 249, 245));
 
-        // Header panel
-        JPanel headerPanel = new JPanel(new BorderLayout());
-        headerPanel.setBackground(new Color(240, 249, 245));
-        headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 30, 10, 30));
-        
-        JLabel titleLabel = new JLabel("Barangay Management");
-        titleLabel.setFont(Typography.HEADING_H1);
-        titleLabel.setForeground(Colors.TEXT_PRIMARY);
-        
-        headerPanel.add(titleLabel, BorderLayout.WEST);
-        add(headerPanel, BorderLayout.NORTH);
+        add(new Header("Barangay Management", false), BorderLayout.NORTH);
         
         JPanel contentPanel = new JPanel(new BorderLayout(0, 20));
         contentPanel.setBackground(new Color(240, 249, 245));

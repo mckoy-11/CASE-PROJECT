@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import com.wastely.utils.Colors;
+import com.wastely.utils.ComponentStyle;
 import com.wastely.utils.Typography;
 
 /**
@@ -28,12 +29,11 @@ public class Sidebar extends JPanel {
     
     private void setupSidebar() {
         setLayout(new BorderLayout());
-        setBackground(Colors.SECONDARY_GREEN);
+        setBackground(Colors.SECONDARY_LIGHT_GREEN);
         setPreferredSize(new Dimension(256, 0));  // w-64
         
         // Header with logo
-        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 15));
-        headerPanel.setBackground(Colors.SECONDARY_GREEN);
+        JPanel headerPanel = ComponentStyle.createTransparentPanel(new FlowLayout(FlowLayout.LEFT, 10, 15));
         
         JLabel logoLabel = new JLabel(Loader.loadIcon("leafv2.png", 30));
         logoLabel.setFont(new Font("Arial", Font.BOLD, 28));
@@ -49,35 +49,14 @@ public class Sidebar extends JPanel {
         // Menu items
         menuPanel = new JPanel();
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
-        menuPanel.setBackground(Colors.SECONDARY_GREEN);
+        menuPanel.setBackground(Colors.SECONDARY_LIGHT_GREEN);
         
         JScrollPane scrollPane = new JScrollPane(menuPanel);
         scrollPane.setBorder(null);
-        scrollPane.setBackground(Colors.SECONDARY_GREEN);
-        scrollPane.getViewport().setBackground(Colors.SECONDARY_GREEN);
+        scrollPane.setBackground(Colors.SECONDARY_LIGHT_GREEN);
+        scrollPane.getViewport().setBackground(Colors.SECONDARY_LIGHT_GREEN);
         
         add(scrollPane, BorderLayout.CENTER);
-        
-        // Logout button at bottom
-        JPanel footerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 10));
-        footerPanel.setBackground(Colors.SECONDARY_GREEN);
-        
-        CustomButton logoutBtn = new CustomButton("Logout", CustomButton.ButtonStyle.OUTLINE) {
-            @Override
-            protected void paintComponent(Graphics g) {
-                Graphics2D g2d = (Graphics2D) g;
-                g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                g2d.setColor(Color.WHITE);
-                g2d.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 10, 10);
-                super.paintComponent(g2d);
-            }
-        };
-        logoutBtn.setForeground(Color.WHITE);
-        logoutBtn.setBackground(Color.WHITE);
-        logoutBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
-        footerPanel.add(logoutBtn);
-        add(footerPanel, BorderLayout.SOUTH);
     }
     
     /**
@@ -121,15 +100,16 @@ public class Sidebar extends JPanel {
     private static class NavMenuItem extends JPanel {
         private final String id;
         private boolean isActive;
+        private final JLabel labelComponent;
         
         public NavMenuItem(String id, ImageIcon icon, String label, NavItemListener listener) {
             this.id = id;
             this.isActive = false;
             
             setLayout(new BorderLayout());
-            setBackground(Colors.SECONDARY_GREEN);
+            setBackground(Colors.SECONDARY_LIGHT_GREEN);
             
-            JLabel labelComponent = new JLabel(label);
+            labelComponent = new JLabel(label);
             labelComponent.setIcon(icon);
             labelComponent.setFont(Typography.LABEL_MEDIUM);
             labelComponent.setForeground(Color.WHITE);
@@ -148,7 +128,8 @@ public class Sidebar extends JPanel {
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     if (!isActive) {
-                        setBackground(Colors.SECONDARY_LIGHT_GREEN);  // Hover color
+                        setBackground(Colors.BACKGROUND_WHITE);  // Hover color
+                        labelComponent.setForeground(Colors.SECONDARY_GREEN);
                         repaint();
                     }
                 }
@@ -156,7 +137,8 @@ public class Sidebar extends JPanel {
                 @Override
                 public void mouseExited(MouseEvent e) {
                     if (!isActive) {
-                        setBackground(Colors.SECONDARY_GREEN);
+                        setBackground(Colors.SECONDARY_LIGHT_GREEN);
+                        labelComponent.setForeground(Color.WHITE);
                         repaint();
                     }
                 }
@@ -170,20 +152,11 @@ public class Sidebar extends JPanel {
         public void setActive(boolean active) {
             this.isActive = active;
             if (active) {
-                setBackground(Color.WHITE);
-                // Change label color to match active state
-                for (Component comp : getComponents()) {
-                    if (comp instanceof JLabel) {
-                        ((JLabel) comp).setForeground(Colors.SECONDARY_GREEN);
-                    }
-                }
+                setBackground(Colors.BACKGROUND_WHITE);  // White background when selected
+                labelComponent.setForeground(Colors.SECONDARY_GREEN);  // Green text for contrast
             } else {
-                setBackground(Colors.SECONDARY_GREEN);
-                for (Component comp : getComponents()) {
-                    if (comp instanceof JLabel) {
-                        ((JLabel) comp).setForeground(Color.WHITE);
-                    }
-                }
+                setBackground(Colors.SECONDARY_LIGHT_GREEN);
+                labelComponent.setForeground(Color.WHITE);
             }
             repaint();
         }

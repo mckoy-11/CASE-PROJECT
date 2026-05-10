@@ -87,4 +87,12 @@ public class ComponentStyle {
         row.add(right);
         return row;
     }
+    
+    public static JComponent wrap(JComponent c) {
+        c.setMaximumSize(new Dimension(Integer.MAX_VALUE, c.getPreferredSize().height));
+        c.setPreferredSize(new Dimension(Short.MAX_VALUE, c.getPreferredSize().height));
+        c.setMinimumSize(new Dimension(0, c.getPreferredSize().height));
+
+        return c;
+    }
 }

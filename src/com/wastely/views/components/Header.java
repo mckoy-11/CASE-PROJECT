@@ -11,14 +11,20 @@ public class Header extends JPanel {
 
     private final JLabel headerTitle;
 
-    public Header(String title) {
+    public Header(String title, boolean hasBG) {
         setLayout(new BorderLayout());
         setBorder(new EmptyBorder(10, 15, 10, 15));
-        setBackground(Colors.PRIMARY_GREEN);
 
         headerTitle = new JLabel(title);
-        headerTitle.setForeground(Color.WHITE);
         headerTitle.setFont(Typography.HEADING_H3);
+        
+        if(hasBG) {
+            setBackground(Colors.PRIMARY_GREEN);
+            headerTitle.setForeground(Color.WHITE);
+        } else {
+            setOpaque(false);
+            headerTitle.setForeground(Color.BLACK);
+        }
 
         add(headerTitle, BorderLayout.WEST);
     }
